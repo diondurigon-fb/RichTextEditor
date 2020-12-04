@@ -24,9 +24,13 @@ let package = Package(
             dependencies: [],
             resources: [
                 .process("Assets/html_colors.json"),
+                .copy("RichTextEditor/Assets/Media.xcassets")
             ]),
         .testTarget(
             name: "RichTextEditorTests",
-            dependencies: ["RichTextEditor"]),
+            dependencies: ["RichTextEditor"],
+            resources: [
+                .copy("Resources/content.html")
+            ]),
     ]
 )
