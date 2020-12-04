@@ -211,7 +211,7 @@ public enum GridiconType: Int {
 }
 
 extension GridiconType {
-  var name: String {
+  public var name: String {
     switch self {
     case .addImage: return "add-image"
     case .addOutline: return "photo.on.rectangle"
