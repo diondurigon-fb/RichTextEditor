@@ -41,10 +41,6 @@ extension CommentAttachmentRenderer: TextViewAttachmentImageProvider {
         // Either this is a comment attachment, or the logic is broken.
         let commentAttachment = attachment as! CommentAttachment
 
-        guard !isGutenbergComment(commentAttachment) else {
-            return nil
-        }
-
         let message = messageAttributedString()
         let targetRect = boundingRect(for: message, size: size)
 
@@ -61,10 +57,6 @@ extension CommentAttachmentRenderer: TextViewAttachmentImageProvider {
 
         // Either this is a comment attachment, or the logic is broken.
         let commentAttachment = attachment as! CommentAttachment
-
-        guard !isGutenbergComment(commentAttachment) else {
-            return .zero
-        }
 
         let size = CGSize(width: lineFragment.size.width, height: lineFragment.size.height)
         var rect = boundingRect(for: message, size: size)
@@ -93,16 +85,6 @@ private extension CommentAttachmentRenderer {
         ]
 
         return NSAttributedString(string: defaultText, attributes: attributes)
-    }
-
-    func isGutenbergComment(_ comment: CommentAttachment) -> Bool {
-
-        let openingGutenbergTag = "wp:"
-        let closingGutenbergTag = "/wp:"
-
-        let text = comment.text.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        return verify(text, startsWith: openingGutenbergTag) || verify(text, startsWith: closingGutenbergTag)
     }
 
     func verify(_ text: String, startsWith string: String) -> Bool {

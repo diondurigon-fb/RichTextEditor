@@ -66,7 +66,7 @@ open class HTMLParser {
             if let messagePtr = errorPtr?.pointee.message {
                 let message = String(cString: messagePtr)
 
-                NSLog("Message: \(message)")
+//                NSLog("Message: \(message)")
             }
 
             // Some errors are really not a problem for us (like "misplaced HTML tag"), so let's
